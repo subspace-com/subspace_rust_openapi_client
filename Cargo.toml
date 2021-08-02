@@ -9,6 +9,12 @@ documentation = "https://console.subspace.com/docs"
 readme = "README.md"
 homepage = "https://subspace.com"
 repository = "https://github.com/subspace-com/subspace_rust_openapi_client"
+exclude = [
+    ".gitignore",
+    ".openapi-generator-ignore",
+    ".openapi-generator",
+    ".travis.yml",
+]
 
 [dependencies]
 serde = "^1.0"
