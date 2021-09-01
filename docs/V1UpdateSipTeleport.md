@@ -1,11 +1,12 @@
-# V1ListSipTeleportResponse
+# V1UpdateSipTeleport
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**sip_teleports** | Option<[**Vec<crate::models::V1SipTeleportResponse>**](v1SipTeleportResponse.md)> |  | [optional]
-**next_page** | Option<[**crate::models::V1NextPage**](v1NextPage.md)> |  | [optional]
+**name** | **String** | Name of SIPTeleport | 
+**destination** | **String** | Destination of SIPTeleport | 
+**status** | [**crate::models::V1SipTeleportStatus**](v1SipTeleportStatus.md) |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

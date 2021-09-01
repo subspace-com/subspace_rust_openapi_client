@@ -9,44 +9,23 @@
  */
 
 
-use reqwest;
 
-#[derive(Debug, Clone)]
-pub struct Configuration {
-    pub base_path: String,
-    pub user_agent: Option<String>,
-    pub client: reqwest::Client,
-    pub basic_auth: Option<BasicAuth>,
-    pub oauth_access_token: Option<String>,
-    pub bearer_access_token: Option<String>,
-    pub api_key: Option<ApiKey>,
-    // TODO: take an oauth2 token source, similar to the go one
+
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
+pub struct V1ListProjectsResponse {
+    #[serde(rename = "projects", skip_serializing_if = "Option::is_none")]
+    pub projects: Option<Vec<crate::models::V1Project>>,
+    #[serde(rename = "next_page", skip_serializing_if = "Option::is_none")]
+    pub next_page: Option<Box<crate::models::V1NextPage>>,
 }
 
-pub type BasicAuth = (String, Option<String>);
-
-#[derive(Debug, Clone)]
-pub struct ApiKey {
-    pub prefix: Option<String>,
-    pub key: String,
-}
-
-impl Configuration {
-    pub fn new() -> Configuration {
-        Configuration::default()
-    }
-}
-
-impl Default for Configuration {
-    fn default() -> Self {
-        Configuration {
-            base_path: "https://api.subspace.com".to_owned(),
-            user_agent: Some("OpenAPI-Generator/1.0/rust".to_owned()),
-            client: reqwest::Client::new(),
-            basic_auth: None,
-            oauth_access_token: None,
-            bearer_access_token: None,
-            api_key: None,
+impl V1ListProjectsResponse {
+    pub fn new() -> V1ListProjectsResponse {
+        V1ListProjectsResponse {
+            projects: None,
+            next_page: None,
         }
     }
 }
+
+

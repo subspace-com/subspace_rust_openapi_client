@@ -15,120 +15,49 @@ use crate::apis::ResponseContent;
 use super::{Error, configuration};
 
 
-/// struct for typed errors of method `sip_teleport_service_create`
+/// struct for typed errors of method `project_service_create`
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
-pub enum SipTeleportServiceCreateError {
-    Status400(serde_json::Value),
-    Status401(serde_json::Value),
-    Status402(serde_json::Value),
-    Status403(serde_json::Value),
-    Status404(serde_json::Value),
-    Status429(serde_json::Value),
+pub enum ProjectServiceCreateError {
     DefaultResponse(serde_json::Value),
     UnknownValue(serde_json::Value),
 }
 
-/// struct for typed errors of method `sip_teleport_service_delete`
+/// struct for typed errors of method `project_service_get`
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
-pub enum SipTeleportServiceDeleteError {
-    Status400(serde_json::Value),
-    Status401(serde_json::Value),
-    Status402(serde_json::Value),
-    Status403(serde_json::Value),
-    Status404(serde_json::Value),
-    Status429(serde_json::Value),
+pub enum ProjectServiceGetError {
     DefaultResponse(serde_json::Value),
     UnknownValue(serde_json::Value),
 }
 
-/// struct for typed errors of method `sip_teleport_service_get`
+/// struct for typed errors of method `project_service_list`
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
-pub enum SipTeleportServiceGetError {
-    Status400(serde_json::Value),
-    Status401(serde_json::Value),
-    Status402(serde_json::Value),
-    Status403(serde_json::Value),
-    Status404(serde_json::Value),
-    Status429(serde_json::Value),
+pub enum ProjectServiceListError {
     DefaultResponse(serde_json::Value),
     UnknownValue(serde_json::Value),
 }
 
-/// struct for typed errors of method `sip_teleport_service_list`
+/// struct for typed errors of method `project_service_update`
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
-pub enum SipTeleportServiceListError {
-    Status400(serde_json::Value),
-    Status401(serde_json::Value),
-    Status402(serde_json::Value),
-    Status403(serde_json::Value),
-    Status404(serde_json::Value),
-    Status429(serde_json::Value),
-    DefaultResponse(serde_json::Value),
-    UnknownValue(serde_json::Value),
-}
-
-/// struct for typed errors of method `sip_teleport_service_update`
-#[derive(Debug, Clone, Serialize, Deserialize)]
-#[serde(untagged)]
-pub enum SipTeleportServiceUpdateError {
-    Status400(serde_json::Value),
-    Status401(serde_json::Value),
-    Status402(serde_json::Value),
-    Status403(serde_json::Value),
-    Status404(serde_json::Value),
-    Status429(serde_json::Value),
+pub enum ProjectServiceUpdateError {
     DefaultResponse(serde_json::Value),
     UnknownValue(serde_json::Value),
 }
 
 
-pub async fn sip_teleport_service_create(configuration: &configuration::Configuration, v1_create_sip_teleport: crate::models::V1CreateSipTeleport, idempotency_key: Option<&str>) -> Result<crate::models::V1SipTeleportResponse, Error<SipTeleportServiceCreateError>> {
+pub async fn project_service_create(configuration: &configuration::Configuration, ) -> Result<crate::models::V1Project, Error<ProjectServiceCreateError>> {
 
     let local_var_client = &configuration.client;
 
-    let local_var_uri_str = format!("{}/v1/sip-teleports", configuration.base_path);
+    let local_var_uri_str = format!("{}/v1/projects", configuration.base_path);
     let mut local_var_req_builder = local_var_client.request(reqwest::Method::POST, local_var_uri_str.as_str());
 
     if let Some(ref local_var_user_agent) = configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
-    if let Some(local_var_param_value) = idempotency_key {
-        local_var_req_builder = local_var_req_builder.header("Idempotency-Key", local_var_param_value.to_string());
-    }
-    if let Some(ref local_var_token) = configuration.oauth_access_token {
-        local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
-    };
-    local_var_req_builder = local_var_req_builder.json(&v1_create_sip_teleport);
-
-    let local_var_req = local_var_req_builder.build()?;
-    let local_var_resp = local_var_client.execute(local_var_req).await?;
-
-    let local_var_status = local_var_resp.status();
-    let local_var_content = local_var_resp.text().await?;
-
-    if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
-        serde_json::from_str(&local_var_content).map_err(Error::from)
-    } else {
-        let local_var_entity: Option<SipTeleportServiceCreateError> = serde_json::from_str(&local_var_content).ok();
-        let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
-        Err(Error::ResponseError(local_var_error))
-    }
-}
-
-pub async fn sip_teleport_service_delete(configuration: &configuration::Configuration, id: &str) -> Result<crate::models::V1SipTeleportResponse, Error<SipTeleportServiceDeleteError>> {
-
-    let local_var_client = &configuration.client;
-
-    let local_var_uri_str = format!("{}/v1/sip-teleports/{id}", configuration.base_path, id=crate::apis::urlencode(id));
-    let mut local_var_req_builder = local_var_client.request(reqwest::Method::DELETE, local_var_uri_str.as_str());
-
-    if let Some(ref local_var_user_agent) = configuration.user_agent {
-        local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
-    }
     if let Some(ref local_var_token) = configuration.oauth_access_token {
         local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
     };
@@ -142,17 +71,17 @@ pub async fn sip_teleport_service_delete(configuration: &configuration::Configur
     if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
         serde_json::from_str(&local_var_content).map_err(Error::from)
     } else {
-        let local_var_entity: Option<SipTeleportServiceDeleteError> = serde_json::from_str(&local_var_content).ok();
+        let local_var_entity: Option<ProjectServiceCreateError> = serde_json::from_str(&local_var_content).ok();
         let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
         Err(Error::ResponseError(local_var_error))
     }
 }
 
-pub async fn sip_teleport_service_get(configuration: &configuration::Configuration, id: &str) -> Result<crate::models::V1SipTeleportResponse, Error<SipTeleportServiceGetError>> {
+pub async fn project_service_get(configuration: &configuration::Configuration, id: &str) -> Result<crate::models::V1Project, Error<ProjectServiceGetError>> {
 
     let local_var_client = &configuration.client;
 
-    let local_var_uri_str = format!("{}/v1/sip-teleports/{id}", configuration.base_path, id=crate::apis::urlencode(id));
+    let local_var_uri_str = format!("{}/v1/projects/{id}", configuration.base_path, id=crate::apis::urlencode(id));
     let mut local_var_req_builder = local_var_client.request(reqwest::Method::GET, local_var_uri_str.as_str());
 
     if let Some(ref local_var_user_agent) = configuration.user_agent {
@@ -171,17 +100,17 @@ pub async fn sip_teleport_service_get(configuration: &configuration::Configurati
     if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
         serde_json::from_str(&local_var_content).map_err(Error::from)
     } else {
-        let local_var_entity: Option<SipTeleportServiceGetError> = serde_json::from_str(&local_var_content).ok();
+        let local_var_entity: Option<ProjectServiceGetError> = serde_json::from_str(&local_var_content).ok();
         let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
         Err(Error::ResponseError(local_var_error))
     }
 }
 
-pub async fn sip_teleport_service_list(configuration: &configuration::Configuration, before: Option<&str>, limit: Option<i64>) -> Result<crate::models::V1ListSipTeleportResponse, Error<SipTeleportServiceListError>> {
+pub async fn project_service_list(configuration: &configuration::Configuration, before: Option<&str>, limit: Option<i64>) -> Result<crate::models::V1ListProjectsResponse, Error<ProjectServiceListError>> {
 
     let local_var_client = &configuration.client;
 
-    let local_var_uri_str = format!("{}/v1/sip-teleports", configuration.base_path);
+    let local_var_uri_str = format!("{}/v1/projects", configuration.base_path);
     let mut local_var_req_builder = local_var_client.request(reqwest::Method::GET, local_var_uri_str.as_str());
 
     if let Some(ref local_var_str) = before {
@@ -206,17 +135,17 @@ pub async fn sip_teleport_service_list(configuration: &configuration::Configurat
     if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
         serde_json::from_str(&local_var_content).map_err(Error::from)
     } else {
-        let local_var_entity: Option<SipTeleportServiceListError> = serde_json::from_str(&local_var_content).ok();
+        let local_var_entity: Option<ProjectServiceListError> = serde_json::from_str(&local_var_content).ok();
         let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
         Err(Error::ResponseError(local_var_error))
     }
 }
 
-pub async fn sip_teleport_service_update(configuration: &configuration::Configuration, id: &str, v1_update_sip_teleport: crate::models::V1UpdateSipTeleport) -> Result<crate::models::V1SipTeleportResponse, Error<SipTeleportServiceUpdateError>> {
+pub async fn project_service_update(configuration: &configuration::Configuration, id: &str) -> Result<crate::models::V1Project, Error<ProjectServiceUpdateError>> {
 
     let local_var_client = &configuration.client;
 
-    let local_var_uri_str = format!("{}/v1/sip-teleports/{id}", configuration.base_path, id=crate::apis::urlencode(id));
+    let local_var_uri_str = format!("{}/v1/projects/{id}", configuration.base_path, id=crate::apis::urlencode(id));
     let mut local_var_req_builder = local_var_client.request(reqwest::Method::PUT, local_var_uri_str.as_str());
 
     if let Some(ref local_var_user_agent) = configuration.user_agent {
@@ -225,7 +154,6 @@ pub async fn sip_teleport_service_update(configuration: &configuration::Configur
     if let Some(ref local_var_token) = configuration.oauth_access_token {
         local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
     };
-    local_var_req_builder = local_var_req_builder.json(&v1_update_sip_teleport);
 
     let local_var_req = local_var_req_builder.build()?;
     let local_var_resp = local_var_client.execute(local_var_req).await?;
@@ -236,7 +164,7 @@ pub async fn sip_teleport_service_update(configuration: &configuration::Configur
     if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
         serde_json::from_str(&local_var_content).map_err(Error::from)
     } else {
-        let local_var_entity: Option<SipTeleportServiceUpdateError> = serde_json::from_str(&local_var_content).ok();
+        let local_var_entity: Option<ProjectServiceUpdateError> = serde_json::from_str(&local_var_content).ok();
         let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
         Err(Error::ResponseError(local_var_error))
     }

@@ -9,44 +9,41 @@
  */
 
 
-use reqwest;
 
-#[derive(Debug, Clone)]
-pub struct Configuration {
-    pub base_path: String,
-    pub user_agent: Option<String>,
-    pub client: reqwest::Client,
-    pub basic_auth: Option<BasicAuth>,
-    pub oauth_access_token: Option<String>,
-    pub bearer_access_token: Option<String>,
-    pub api_key: Option<ApiKey>,
-    // TODO: take an oauth2 token source, similar to the go one
+
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
+pub struct V1Project {
+    #[serde(rename = "id", skip_serializing_if = "Option::is_none")]
+    pub id: Option<String>,
+    #[serde(rename = "name", skip_serializing_if = "Option::is_none")]
+    pub name: Option<String>,
+    #[serde(rename = "accelerator_quota", skip_serializing_if = "Option::is_none")]
+    pub accelerator_quota: Option<i64>,
+    #[serde(rename = "accelerator_request_port", skip_serializing_if = "Option::is_none")]
+    pub accelerator_request_port: Option<bool>,
+    #[serde(rename = "globalturn_limit_gb", skip_serializing_if = "Option::is_none")]
+    pub globalturn_limit_gb: Option<i64>,
+    #[serde(rename = "sipteleport_quota", skip_serializing_if = "Option::is_none")]
+    pub sipteleport_quota: Option<i64>,
+    #[serde(rename = "sipteleport_call_quota", skip_serializing_if = "Option::is_none")]
+    pub sipteleport_call_quota: Option<i64>,
+    #[serde(rename = "rtpspeed_limit_gb", skip_serializing_if = "Option::is_none")]
+    pub rtpspeed_limit_gb: Option<i64>,
 }
 
-pub type BasicAuth = (String, Option<String>);
-
-#[derive(Debug, Clone)]
-pub struct ApiKey {
-    pub prefix: Option<String>,
-    pub key: String,
-}
-
-impl Configuration {
-    pub fn new() -> Configuration {
-        Configuration::default()
-    }
-}
-
-impl Default for Configuration {
-    fn default() -> Self {
-        Configuration {
-            base_path: "https://api.subspace.com".to_owned(),
-            user_agent: Some("OpenAPI-Generator/1.0/rust".to_owned()),
-            client: reqwest::Client::new(),
-            basic_auth: None,
-            oauth_access_token: None,
-            bearer_access_token: None,
-            api_key: None,
+impl V1Project {
+    pub fn new() -> V1Project {
+        V1Project {
+            id: None,
+            name: None,
+            accelerator_quota: None,
+            accelerator_request_port: None,
+            globalturn_limit_gb: None,
+            sipteleport_quota: None,
+            sipteleport_call_quota: None,
+            rtpspeed_limit_gb: None,
         }
     }
 }
+
+

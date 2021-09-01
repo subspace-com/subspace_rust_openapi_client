@@ -4,24 +4,26 @@ All URIs are relative to *https://api.subspace.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**sip_teleport_service_create**](SipTeleportServiceApi.md#sip_teleport_service_create) | **POST** /v1/sip-teleports | CreateSipTeleport
-[**sip_teleport_service_delete**](SipTeleportServiceApi.md#sip_teleport_service_delete) | **DELETE** /v1/sip-teleports/{id} | DeleteSipTeleport
-[**sip_teleport_service_get**](SipTeleportServiceApi.md#sip_teleport_service_get) | **GET** /v1/sip-teleports/{id} | GetSipTeleport
-[**sip_teleport_service_list**](SipTeleportServiceApi.md#sip_teleport_service_list) | **GET** /v1/sip-teleports | ListSipTeleports
-[**sip_teleport_service_update**](SipTeleportServiceApi.md#sip_teleport_service_update) | **PUT** /v1/sip-teleports/{id} | UpdateSipTeleport
+[**sip_teleport_service_create**](SipTeleportServiceApi.md#sip_teleport_service_create) | **POST** /v1/sip-teleports | 
+[**sip_teleport_service_delete**](SipTeleportServiceApi.md#sip_teleport_service_delete) | **DELETE** /v1/sip-teleports/{id} | 
+[**sip_teleport_service_get**](SipTeleportServiceApi.md#sip_teleport_service_get) | **GET** /v1/sip-teleports/{id} | 
+[**sip_teleport_service_list**](SipTeleportServiceApi.md#sip_teleport_service_list) | **GET** /v1/sip-teleports | 
+[**sip_teleport_service_update**](SipTeleportServiceApi.md#sip_teleport_service_update) | **PUT** /v1/sip-teleports/{id} | 
 
 
 
 ## sip_teleport_service_create
 
-> crate::models::V1SipTeleportResponse sip_teleport_service_create()
-CreateSipTeleport
+> crate::models::V1SipTeleportResponse sip_teleport_service_create(v1_create_sip_teleport, idempotency_key)
 
-CreateSipTeleport creates a new SIP Teleport
 
 ### Parameters
 
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**v1_create_sip_teleport** | [**V1CreateSipTeleport**](V1CreateSipTeleport.md) | Required parameters to create a new SIPTeleport | [required] |
+**idempotency_key** | Option<**String**> | Value is the returned etag of a get request.  If a retry sends an Idempotency-Key that has been seen before, the existing teleport is returned with the status code of 200 |  |
 
 ### Return type
 
@@ -33,7 +35,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -42,9 +44,7 @@ This endpoint does not need any parameter.
 ## sip_teleport_service_delete
 
 > crate::models::V1SipTeleportResponse sip_teleport_service_delete(id)
-DeleteSipTeleport
 
-DeleteSipTeleport deletes an existing SIP Teleport, specified by its id
 
 ### Parameters
 
@@ -72,9 +72,7 @@ Name | Type | Description  | Required | Notes
 ## sip_teleport_service_get
 
 > crate::models::V1SipTeleportResponse sip_teleport_service_get(id)
-GetSipTeleport
 
-GetSipTeleport fetches the details of a specific SIP Teleport, specified by its id
 
 ### Parameters
 
@@ -102,9 +100,7 @@ Name | Type | Description  | Required | Notes
 ## sip_teleport_service_list
 
 > crate::models::V1ListSipTeleportResponse sip_teleport_service_list(before, limit)
-ListSipTeleports
 
-ListSipTeleports lists all SIP Teleports
 
 ### Parameters
 
@@ -132,10 +128,8 @@ Name | Type | Description  | Required | Notes
 
 ## sip_teleport_service_update
 
-> crate::models::V1SipTeleportResponse sip_teleport_service_update(id)
-UpdateSipTeleport
+> crate::models::V1SipTeleportResponse sip_teleport_service_update(id, v1_update_sip_teleport)
 
-UpdateSipTeleport updates an existing SIP Teleport, specified by its id
 
 ### Parameters
 
@@ -143,6 +137,7 @@ UpdateSipTeleport updates an existing SIP Teleport, specified by its id
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **id** | **String** |  | [required] |
+**v1_update_sip_teleport** | [**V1UpdateSipTeleport**](V1UpdateSipTeleport.md) | Parameters to update an existing SIPTeleport, minimum requirement of one of them defined to update | [required] |
 
 ### Return type
 
@@ -154,7 +149,7 @@ Name | Type | Description  | Required | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

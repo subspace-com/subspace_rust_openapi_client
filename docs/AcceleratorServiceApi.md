@@ -4,20 +4,18 @@ All URIs are relative to *https://api.subspace.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**accelerator_service_create**](AcceleratorServiceApi.md#accelerator_service_create) | **POST** /v1/accelerators | CreateAccelerator
-[**accelerator_service_delete**](AcceleratorServiceApi.md#accelerator_service_delete) | **DELETE** /v1/accelerators/{id} | DeleteAccelerator
-[**accelerator_service_get**](AcceleratorServiceApi.md#accelerator_service_get) | **GET** /v1/accelerators/{id} | GetAccelerator
-[**accelerator_service_list**](AcceleratorServiceApi.md#accelerator_service_list) | **GET** /v1/accelerators | ListAccelerators
-[**accelerator_service_update**](AcceleratorServiceApi.md#accelerator_service_update) | **PUT** /v1/accelerators/{id} | UpdateAccelerator
+[**accelerator_service_create**](AcceleratorServiceApi.md#accelerator_service_create) | **POST** /v1/accelerators | 
+[**accelerator_service_delete**](AcceleratorServiceApi.md#accelerator_service_delete) | **DELETE** /v1/accelerators/{id} | 
+[**accelerator_service_get**](AcceleratorServiceApi.md#accelerator_service_get) | **GET** /v1/accelerators/{id} | 
+[**accelerator_service_list**](AcceleratorServiceApi.md#accelerator_service_list) | **GET** /v1/accelerators | 
+[**accelerator_service_update**](AcceleratorServiceApi.md#accelerator_service_update) | **PUT** /v1/accelerators/{id} | 
 
 
 
 ## accelerator_service_create
 
 > crate::models::V1Accelerator accelerator_service_create(body, idempotency_key)
-CreateAccelerator
 
-CreateAccelerator generates a new PacketAccelerator
 
 ### Parameters
 
@@ -46,9 +44,7 @@ Name | Type | Description  | Required | Notes
 ## accelerator_service_delete
 
 > serde_json::Value accelerator_service_delete(id)
-DeleteAccelerator
 
-DeleteAccelerator deletes the given PacketAccelerator, specified by its id
 
 ### Parameters
 
@@ -76,9 +72,7 @@ Name | Type | Description  | Required | Notes
 ## accelerator_service_get
 
 > crate::models::V1Accelerator accelerator_service_get(id)
-GetAccelerator
 
-GetAccelerator returns the details of a given PacketAccelerator, specified by its id
 
 ### Parameters
 
@@ -105,10 +99,8 @@ Name | Type | Description  | Required | Notes
 
 ## accelerator_service_list
 
-> crate::models::V1ListAcceleratorsResponse accelerator_service_list(before, limit, q)
-ListAccelerators
+> crate::models::V1ListAcceleratorsResponse accelerator_service_list(before, limit)
 
-ListAccelerators returns a list of all existing PacketAccelerators.
 
 ### Parameters
 
@@ -117,7 +109,6 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **before** | Option<**String**> |  |  |
 **limit** | Option<**i64**> |  |  |
-**q** | Option<**String**> | q Provides a query string which filters accelerators in the response. |  |
 
 ### Return type
 
@@ -138,9 +129,7 @@ Name | Type | Description  | Required | Notes
 ## accelerator_service_update
 
 > crate::models::V1Accelerator accelerator_service_update(id, body1, if_match)
-UpdateAccelerator
 
-UpdateAccelerator updates an existing accelerator, specified by its id
 
 ### Parameters
 
