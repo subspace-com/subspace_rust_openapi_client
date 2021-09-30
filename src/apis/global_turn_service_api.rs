@@ -9,41 +9,53 @@
  */
 
 
+use reqwest;
+
+use crate::apis::ResponseContent;
+use super::{Error, configuration};
 
 
-#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
-pub struct V1Project {
-    #[serde(rename = "id", skip_serializing_if = "Option::is_none")]
-    pub id: Option<String>,
-    #[serde(rename = "name", skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
-    #[serde(rename = "accelerator_quota", skip_serializing_if = "Option::is_none")]
-    pub accelerator_quota: Option<i64>,
-    #[serde(rename = "accelerator_request_port", skip_serializing_if = "Option::is_none")]
-    pub accelerator_request_port: Option<bool>,
-    #[serde(rename = "globalturn_limit_gb", skip_serializing_if = "Option::is_none")]
-    pub globalturn_limit_gb: Option<i64>,
-    #[serde(rename = "sipteleport_quota", skip_serializing_if = "Option::is_none")]
-    pub sipteleport_quota: Option<i64>,
-    #[serde(rename = "sipteleport_call_quota", skip_serializing_if = "Option::is_none")]
-    pub sipteleport_call_quota: Option<i64>,
-    #[serde(rename = "rtpspeed_limit_gb", skip_serializing_if = "Option::is_none")]
-    pub rtpspeed_limit_gb: Option<i64>,
+/// struct for typed errors of method `global_turn_service_get_global_turn`
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum GlobalTurnServiceGetGlobalTurnError {
+    Status400(serde_json::Value),
+    Status401(serde_json::Value),
+    Status402(serde_json::Value),
+    Status403(serde_json::Value),
+    Status404(serde_json::Value),
+    Status429(serde_json::Value),
+    DefaultResponse(serde_json::Value),
+    UnknownValue(serde_json::Value),
 }
 
-impl V1Project {
-    pub fn new() -> V1Project {
-        V1Project {
-            id: None,
-            name: None,
-            accelerator_quota: None,
-            accelerator_request_port: None,
-            globalturn_limit_gb: None,
-            sipteleport_quota: None,
-            sipteleport_call_quota: None,
-            rtpspeed_limit_gb: None,
-        }
+
+pub async fn global_turn_service_get_global_turn(configuration: &configuration::Configuration, ) -> Result<crate::models::V1GlobalTurnResponse, Error<GlobalTurnServiceGetGlobalTurnError>> {
+
+    let local_var_client = &configuration.client;
+
+    let local_var_uri_str = format!("{}/v1/globalturn", configuration.base_path);
+    let mut local_var_req_builder = local_var_client.request(reqwest::Method::POST, local_var_uri_str.as_str());
+
+    if let Some(ref local_var_user_agent) = configuration.user_agent {
+        local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
+    }
+    if let Some(ref local_var_token) = configuration.oauth_access_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
+    };
+
+    let local_var_req = local_var_req_builder.build()?;
+    let local_var_resp = local_var_client.execute(local_var_req).await?;
+
+    let local_var_status = local_var_resp.status();
+    let local_var_content = local_var_resp.text().await?;
+
+    if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
+        serde_json::from_str(&local_var_content).map_err(Error::from)
+    } else {
+        let local_var_entity: Option<GlobalTurnServiceGetGlobalTurnError> = serde_json::from_str(&local_var_content).ok();
+        let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
+        Err(Error::ResponseError(local_var_error))
     }
 }
-
 

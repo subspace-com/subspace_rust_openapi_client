@@ -1,11 +1,10 @@
-# V1ListSipTeleportResponse
+# V1GlobalTurnResponse
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | Option<[**Vec<crate::models::V1SipTeleportResponse>**](v1SipTeleportResponse.md)> |  | [optional]
-**next_page** | Option<[**crate::models::V1NextPage**](v1NextPage.md)> |  | [optional]
+**ice_servers** | Option<[**Vec<crate::models::V1GlobalTurnServer>**](v1GlobalTurnServer.md)> |  | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

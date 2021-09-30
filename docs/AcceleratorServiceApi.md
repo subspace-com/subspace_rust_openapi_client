@@ -4,11 +4,11 @@ All URIs are relative to *https://api.subspace.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**accelerator_service_create**](AcceleratorServiceApi.md#accelerator_service_create) | **POST** /v1/accelerators | 
-[**accelerator_service_delete**](AcceleratorServiceApi.md#accelerator_service_delete) | **DELETE** /v1/accelerators/{id} | 
-[**accelerator_service_get**](AcceleratorServiceApi.md#accelerator_service_get) | **GET** /v1/accelerators/{id} | 
-[**accelerator_service_list**](AcceleratorServiceApi.md#accelerator_service_list) | **GET** /v1/accelerators | 
-[**accelerator_service_update**](AcceleratorServiceApi.md#accelerator_service_update) | **PUT** /v1/accelerators/{id} | 
+[**accelerator_service_create**](AcceleratorServiceApi.md#accelerator_service_create) | **POST** /v1/accelerator | 
+[**accelerator_service_delete**](AcceleratorServiceApi.md#accelerator_service_delete) | **DELETE** /v1/accelerator/{id} | 
+[**accelerator_service_get**](AcceleratorServiceApi.md#accelerator_service_get) | **GET** /v1/accelerator/{id} | 
+[**accelerator_service_list**](AcceleratorServiceApi.md#accelerator_service_list) | **GET** /v1/accelerator | 
+[**accelerator_service_update**](AcceleratorServiceApi.md#accelerator_service_update) | **PUT** /v1/accelerator/{id} | 
 
 
 
@@ -99,7 +99,7 @@ Name | Type | Description  | Required | Notes
 
 ## accelerator_service_list
 
-> crate::models::V1ListAcceleratorsResponse accelerator_service_list(before, limit)
+> crate::models::V1ListAcceleratorResponse accelerator_service_list(before, limit)
 
 
 ### Parameters
@@ -112,7 +112,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::V1ListAcceleratorsResponse**](v1ListAcceleratorsResponse.md)
+[**crate::models::V1ListAcceleratorResponse**](v1ListAcceleratorResponse.md)
 
 ### Authorization
 

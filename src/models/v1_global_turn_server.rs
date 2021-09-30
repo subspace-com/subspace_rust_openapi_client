@@ -12,36 +12,24 @@
 
 
 #[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
-pub struct V1Project {
-    #[serde(rename = "id", skip_serializing_if = "Option::is_none")]
-    pub id: Option<String>,
-    #[serde(rename = "name", skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
-    #[serde(rename = "accelerator_quota", skip_serializing_if = "Option::is_none")]
-    pub accelerator_quota: Option<i64>,
-    #[serde(rename = "accelerator_request_port", skip_serializing_if = "Option::is_none")]
-    pub accelerator_request_port: Option<bool>,
-    #[serde(rename = "globalturn_limit_gb", skip_serializing_if = "Option::is_none")]
-    pub globalturn_limit_gb: Option<i64>,
-    #[serde(rename = "sipteleport_quota", skip_serializing_if = "Option::is_none")]
-    pub sipteleport_quota: Option<i64>,
-    #[serde(rename = "sipteleport_call_quota", skip_serializing_if = "Option::is_none")]
-    pub sipteleport_call_quota: Option<i64>,
-    #[serde(rename = "rtpspeed_limit_gb", skip_serializing_if = "Option::is_none")]
-    pub rtpspeed_limit_gb: Option<i64>,
+pub struct V1GlobalTurnServer {
+    #[serde(rename = "username", skip_serializing_if = "Option::is_none")]
+    pub username: Option<String>,
+    #[serde(rename = "credential", skip_serializing_if = "Option::is_none")]
+    pub credential: Option<String>,
+    #[serde(rename = "url", skip_serializing_if = "Option::is_none")]
+    pub url: Option<String>,
+    #[serde(rename = "urls", skip_serializing_if = "Option::is_none")]
+    pub urls: Option<String>,
 }
 
-impl V1Project {
-    pub fn new() -> V1Project {
-        V1Project {
-            id: None,
-            name: None,
-            accelerator_quota: None,
-            accelerator_request_port: None,
-            globalturn_limit_gb: None,
-            sipteleport_quota: None,
-            sipteleport_call_quota: None,
-            rtpspeed_limit_gb: None,
+impl V1GlobalTurnServer {
+    pub fn new() -> V1GlobalTurnServer {
+        V1GlobalTurnServer {
+            username: None,
+            credential: None,
+            url: None,
+            urls: None,
         }
     }
 }

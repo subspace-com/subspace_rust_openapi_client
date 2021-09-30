@@ -12,36 +12,15 @@
 
 
 #[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
-pub struct V1Project {
-    #[serde(rename = "id", skip_serializing_if = "Option::is_none")]
-    pub id: Option<String>,
-    #[serde(rename = "name", skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
-    #[serde(rename = "accelerator_quota", skip_serializing_if = "Option::is_none")]
-    pub accelerator_quota: Option<i64>,
-    #[serde(rename = "accelerator_request_port", skip_serializing_if = "Option::is_none")]
-    pub accelerator_request_port: Option<bool>,
-    #[serde(rename = "globalturn_limit_gb", skip_serializing_if = "Option::is_none")]
-    pub globalturn_limit_gb: Option<i64>,
-    #[serde(rename = "sipteleport_quota", skip_serializing_if = "Option::is_none")]
-    pub sipteleport_quota: Option<i64>,
-    #[serde(rename = "sipteleport_call_quota", skip_serializing_if = "Option::is_none")]
-    pub sipteleport_call_quota: Option<i64>,
-    #[serde(rename = "rtpspeed_limit_gb", skip_serializing_if = "Option::is_none")]
-    pub rtpspeed_limit_gb: Option<i64>,
+pub struct V1GlobalTurnResponse {
+    #[serde(rename = "ice_servers", skip_serializing_if = "Option::is_none")]
+    pub ice_servers: Option<Vec<crate::models::V1GlobalTurnServer>>,
 }
 
-impl V1Project {
-    pub fn new() -> V1Project {
-        V1Project {
-            id: None,
-            name: None,
-            accelerator_quota: None,
-            accelerator_request_port: None,
-            globalturn_limit_gb: None,
-            sipteleport_quota: None,
-            sipteleport_call_quota: None,
-            rtpspeed_limit_gb: None,
+impl V1GlobalTurnResponse {
+    pub fn new() -> V1GlobalTurnResponse {
+        V1GlobalTurnResponse {
+            ice_servers: None,
         }
     }
 }
