@@ -15,12 +15,15 @@
 pub struct V1GlobalTurnResponse {
     #[serde(rename = "ice_servers", skip_serializing_if = "Option::is_none")]
     pub ice_servers: Option<Vec<crate::models::V1GlobalTurnServer>>,
+    #[serde(rename = "ttl", skip_serializing_if = "Option::is_none")]
+    pub ttl: Option<i64>,
 }
 
 impl V1GlobalTurnResponse {
     pub fn new() -> V1GlobalTurnResponse {
         V1GlobalTurnResponse {
             ice_servers: None,
+            ttl: None,
         }
     }
 }

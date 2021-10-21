@@ -29,6 +29,20 @@ pub enum SessionServiceListError {
     UnknownValue(serde_json::Value),
 }
 
+/// struct for typed errors of method `session_service_list2`
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum SessionServiceList2Error {
+    Status400(serde_json::Value),
+    Status401(serde_json::Value),
+    Status402(serde_json::Value),
+    Status403(serde_json::Value),
+    Status404(serde_json::Value),
+    Status429(serde_json::Value),
+    DefaultResponse(serde_json::Value),
+    UnknownValue(serde_json::Value),
+}
+
 
 pub async fn session_service_list(configuration: &configuration::Configuration, accelerator_id: &str, before: Option<&str>, limit: Option<i64>) -> Result<crate::models::V1ListSessionsResponse, Error<SessionServiceListError>> {
 
@@ -60,6 +74,41 @@ pub async fn session_service_list(configuration: &configuration::Configuration, 
         serde_json::from_str(&local_var_content).map_err(Error::from)
     } else {
         let local_var_entity: Option<SessionServiceListError> = serde_json::from_str(&local_var_content).ok();
+        let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
+        Err(Error::ResponseError(local_var_error))
+    }
+}
+
+pub async fn session_service_list2(configuration: &configuration::Configuration, accelerator_id: &str, before: Option<&str>, limit: Option<i64>) -> Result<crate::models::V1ListSessionsResponse, Error<SessionServiceList2Error>> {
+
+    let local_var_client = &configuration.client;
+
+    let local_var_uri_str = format!("{}/v1/accelerators/{accelerator_id}/sessions", configuration.base_path, accelerator_id=crate::apis::urlencode(accelerator_id));
+    let mut local_var_req_builder = local_var_client.request(reqwest::Method::GET, local_var_uri_str.as_str());
+
+    if let Some(ref local_var_str) = before {
+        local_var_req_builder = local_var_req_builder.query(&[("before", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = limit {
+        local_var_req_builder = local_var_req_builder.query(&[("limit", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_user_agent) = configuration.user_agent {
+        local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
+    }
+    if let Some(ref local_var_token) = configuration.oauth_access_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
+    };
+
+    let local_var_req = local_var_req_builder.build()?;
+    let local_var_resp = local_var_client.execute(local_var_req).await?;
+
+    let local_var_status = local_var_resp.status();
+    let local_var_content = local_var_resp.text().await?;
+
+    if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
+        serde_json::from_str(&local_var_content).map_err(Error::from)
+    } else {
+        let local_var_entity: Option<SessionServiceList2Error> = serde_json::from_str(&local_var_content).ok();
         let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
         Err(Error::ResponseError(local_var_error))
     }

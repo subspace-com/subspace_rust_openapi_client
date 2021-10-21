@@ -19,6 +19,9 @@ pub struct V1CreateSipTeleport {
     /// Destination of SIPTeleport
     #[serde(rename = "destination")]
     pub destination: String,
+    /// Enum: [ ENABLED, DISABLED ]
+    #[serde(rename = "status", skip_serializing_if = "Option::is_none")]
+    pub status: Option<String>,
 }
 
 impl V1CreateSipTeleport {
@@ -26,6 +29,7 @@ impl V1CreateSipTeleport {
         V1CreateSipTeleport {
             name,
             destination,
+            status: None,
         }
     }
 }

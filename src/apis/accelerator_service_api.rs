@@ -178,7 +178,7 @@ pub async fn accelerator_service_get(configuration: &configuration::Configuratio
     }
 }
 
-pub async fn accelerator_service_list(configuration: &configuration::Configuration, before: Option<&str>, limit: Option<i64>) -> Result<crate::models::V1ListAcceleratorResponse, Error<AcceleratorServiceListError>> {
+pub async fn accelerator_service_list(configuration: &configuration::Configuration, before: Option<&str>, limit: Option<i64>, name: Option<&str>) -> Result<crate::models::V1ListAcceleratorResponse, Error<AcceleratorServiceListError>> {
 
     let local_var_client = &configuration.client;
 
@@ -190,6 +190,9 @@ pub async fn accelerator_service_list(configuration: &configuration::Configurati
     }
     if let Some(ref local_var_str) = limit {
         local_var_req_builder = local_var_req_builder.query(&[("limit", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = name {
+        local_var_req_builder = local_var_req_builder.query(&[("name", &local_var_str.to_string())]);
     }
     if let Some(ref local_var_user_agent) = configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());

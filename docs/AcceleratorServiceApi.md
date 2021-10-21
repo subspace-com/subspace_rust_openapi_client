@@ -99,7 +99,7 @@ Name | Type | Description  | Required | Notes
 
 ## accelerator_service_list
 
-> crate::models::V1ListAcceleratorResponse accelerator_service_list(before, limit)
+> crate::models::V1ListAcceleratorResponse accelerator_service_list(before, limit, name)
 
 
 ### Parameters
@@ -109,6 +109,7 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **before** | Option<**String**> |  |  |
 **limit** | Option<**i64**> |  |  |
+**name** | Option<**String**> |  |  |
 
 ### Return type
 

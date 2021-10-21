@@ -112,7 +112,6 @@ Versions are added to the base url, for example:
 
 Current Version is **v1:** `https://api.subspace.com/v1`
 
-
 ## Tips for using the API
 
 Using the library from inside your program
@@ -143,10 +142,10 @@ For more information, please visit [https://subspace.com](https://subspace.com)
 
 ## Installation
 
-Put the package under your project folder and add the following to `Cargo.toml` under `[dependencies]`:
+Put the package under your project folder and add the following to `Cargo.toml` under `[dependencies]` (assuming installation is to directory subspace-client):
 
 ```
-    openapi = { path = "./generated" }
+    subspace_openapi_client = { path = "./subspace-client" }
 ```
 
 ## Documentation for API Endpoints
@@ -166,6 +165,7 @@ Class | Method | HTTP request | Description
 *ProjectServiceApi* | [**project_service_list**](docs/ProjectServiceApi.md#project_service_list) | **GET** /v1/project | 
 *ProjectServiceApi* | [**project_service_update**](docs/ProjectServiceApi.md#project_service_update) | **PUT** /v1/project/{id} | 
 *SessionServiceApi* | [**session_service_list**](docs/SessionServiceApi.md#session_service_list) | **GET** /v1/accelerator/{accelerator_id}/session | 
+*SessionServiceApi* | [**session_service_list2**](docs/SessionServiceApi.md#session_service_list2) | **GET** /v1/accelerators/{accelerator_id}/sessions | 
 *SipTeleportServiceApi* | [**sip_teleport_service_create**](docs/SipTeleportServiceApi.md#sip_teleport_service_create) | **POST** /v1/sipteleport | 
 *SipTeleportServiceApi* | [**sip_teleport_service_delete**](docs/SipTeleportServiceApi.md#sip_teleport_service_delete) | **DELETE** /v1/sipteleport/{id} | 
 *SipTeleportServiceApi* | [**sip_teleport_service_get**](docs/SipTeleportServiceApi.md#sip_teleport_service_get) | **GET** /v1/sipteleport/{id} | 
