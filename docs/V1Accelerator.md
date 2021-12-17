@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**destination_ip** | Option<**String**> |  | [optional]
-**destination_port** | Option<**i64**> |  | [optional]
 **id** | Option<**String**> |  | [optional]
 **name** | Option<**String**> |  | [optional]
+**destination_ip** | Option<**String**> |  | [optional]
+**destination_port** | Option<**i64**> |  | [optional]
 **subspace_ipv4** | Option<**String**> |  | [optional]
 **subspace_port** | Option<**i64**> |  | [optional]
 
