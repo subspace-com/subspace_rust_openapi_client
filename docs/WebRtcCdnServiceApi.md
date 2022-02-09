@@ -1,16 +1,16 @@
-# \GlobalTurnServiceApi
+# \WebRtcCdnServiceApi
 
 All URIs are relative to *https://api.subspace.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**global_turn_service_get_global_turn**](GlobalTurnServiceApi.md#global_turn_service_get_global_turn) | **POST** /v1/globalturn | 
+[**web_rtc_cdn_service_get_web_rtc_cdn**](WebRtcCdnServiceApi.md#web_rtc_cdn_service_get_web_rtc_cdn) | **POST** /v1/webrtc-cdn | 
 
 
 
-## global_turn_service_get_global_turn
+## web_rtc_cdn_service_get_web_rtc_cdn
 
-> crate::models::V1GlobalTurnResponse global_turn_service_get_global_turn()
+> crate::models::V1WebRtcCdnResponse web_rtc_cdn_service_get_web_rtc_cdn()
 
 
 ### Parameters
@@ -19,7 +19,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**crate::models::V1GlobalTurnResponse**](v1GlobalTurnResponse.md)
+[**crate::models::V1WebRtcCdnResponse**](v1WebRtcCdnResponse.md)
 
 ### Authorization
 

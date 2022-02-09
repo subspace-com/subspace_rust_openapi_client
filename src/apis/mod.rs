@@ -62,7 +62,7 @@ pub fn urlencode<T: AsRef<str>>(s: T) -> String {
 }
 
 pub mod accelerator_service_api;
-pub mod global_turn_service_api;
 pub mod sip_teleport_service_api;
+pub mod web_rtc_cdn_service_api;
 
 pub mod configuration;

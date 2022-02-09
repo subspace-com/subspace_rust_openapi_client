@@ -12,18 +12,18 @@
 
 
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
-pub struct V1ListAcceleratorResponse {
-    #[serde(rename = "data", skip_serializing_if = "Option::is_none")]
-    pub data: Option<Vec<crate::models::V1Accelerator>>,
-    #[serde(rename = "next_page", skip_serializing_if = "Option::is_none")]
-    pub next_page: Option<Box<crate::models::V1NextPage>>,
+pub struct V1WebRtcCdnResponse {
+    #[serde(rename = "iceServers", skip_serializing_if = "Option::is_none")]
+    pub ice_servers: Option<Vec<crate::models::V1WebRtcCdnServer>>,
+    #[serde(rename = "ttl", skip_serializing_if = "Option::is_none")]
+    pub ttl: Option<i64>,
 }
 
-impl V1ListAcceleratorResponse {
-    pub fn new() -> V1ListAcceleratorResponse {
-        V1ListAcceleratorResponse {
-            data: None,
-            next_page: None,
+impl V1WebRtcCdnResponse {
+    pub fn new() -> V1WebRtcCdnResponse {
+        V1WebRtcCdnResponse {
+            ice_servers: None,
+            ttl: None,
         }
     }
 }
